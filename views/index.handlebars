@@ -1,14 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
+<h1>EAT DA BURGERRRRRR</h1>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EAT DA BURGER</title>
-</head>
+<h2>Name your Burger:</h2>
+<form>
+    <div>
+        <label for="burger">Burger:</label>
+        <input type="text" id="burger" name="name">
+        <br>
+        <button type="submit">Add Burger</button>
+    </div>
+</form>
 
-<body>
-    <h1>EAT DA BURGER</h1>
-</body>
+<h2>Let's Eat!</h2>
 
-</html>
+<ul>
+    {{#each burgers}}
+    {{#unless isDevoured}}
+    {{> burgers/burger-block isDevoured=false}}
+    {{/unless}}
+    {{/each}}
+</ul>
+
+<h2>Devoured Burgers</h2>
+
+<ul>
+    {{#each burgers}}
+    {{#if isDevoured}}
+    {{> burgers/burger-block isDevoured=true}}
+    {{/if}}
+    {{/each}}
+</ul>
