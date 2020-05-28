@@ -1,15 +1,17 @@
 <h1>EAT DA BURGERRRRRR</h1>
 
+{{!-- Burger Submit Form --}}
 <h2>Name your Burger:</h2>
-<form>
-    <div>
-        <label for="burger">Burger:</label>
+<form class="create-form">
+    <div class="form-group">
+        <label for="burger"></label>
         <input type="text" id="burger" name="name">
         <br>
         <button type="submit">Add Burger</button>
     </div>
 </form>
 
+{{!-- Burgers yet to be devoured --}}
 <h2>Let's Eat!</h2>
 
 <ul>
@@ -20,6 +22,7 @@
     {{/each}}
 </ul>
 
+{{!-- Devoured Burgers --}}
 <h2>Devoured Burgers</h2>
 
 <ul>
