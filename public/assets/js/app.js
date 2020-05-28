@@ -20,7 +20,24 @@ $(document).ready(function () {
       type: 'PUT',
       data: newDevouredState
     }).then(function () {
-      //   console.log(`Changed Devoured State to: ${devouredState}`);
+      console.log(`Changed Devoured State to: ${devouredState}`);
+
+      location.reload();
+    });
+  });
+
+  $('.create-form').on('submit', function (event) {
+    event.preventDefault();
+
+    var newBurger = {
+      name: $('#burger').val().trim()
+    };
+
+    $.ajax('/api/burgers', {
+      type: 'POST',
+      data: newBurger
+    }).then(function () {
+      console.log('success');
 
       location.reload();
     });
