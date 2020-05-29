@@ -1,3 +1,4 @@
+// Import ORM to interact with the DB
 const orm = require('../config/orm.js');
 
 const burgers = {
@@ -9,10 +10,8 @@ const burgers = {
   },
   update: (objColsVals, condition, cb) => {
     orm.update('burgers', objColsVals, condition, (res) => cb(res));
-  },
-  delete: (condition, cb) => {
-    orm.delete('burgers', condition, (res) => cb(res));
   }
 };
 
+// Export DB functions for controller
 module.exports = burgers;

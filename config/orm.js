@@ -1,5 +1,8 @@
+// Import MySQL connection
 const connection = require('./connection.js');
 
+// Helper function that loops through an array thats length is determinded by the parameter
+// It then will turn that array into a string to be used in a SQL query
 const printQuestionMarks = (num) => {
   let arr = [];
 
@@ -10,8 +13,7 @@ const printQuestionMarks = (num) => {
   return arr.toString();
 };
 
-// console.log(printQuestionMarks(5));
-
+// Helper function that converts object key/value pairs to SQL syntax
 const objToSql = (ob) => {
   let arr = [];
 
@@ -28,14 +30,7 @@ const objToSql = (ob) => {
   return arr.toString();
 };
 
-// let test = {
-//   name: 'John Herman',
-//   age: 30,
-//   isHappy: true
-// };
-
-// console.log(objToSql(test));
-
+// Object that holds all SQL statement functions
 const orm = {
   all: (tableInput, cb) => {
     let queryStr = `SELECT * FROM ${tableInput};`;
@@ -49,8 +44,6 @@ const orm = {
     let queryStr = `INSERT INTO ${table} (${cols.toString()}) `;
     queryStr += `VALUES (${printQuestionMarks(vals.length)})`;
 
-    console.log(queryStr);
-
     connection.query(queryStr, vals, (err, res) => {
       if (err) throw err;
 
@@ -61,8 +54,6 @@ const orm = {
     let queryStr = `UPDATE ${table}`;
     queryStr += ` SET ${objToSql(objColsVals)}`;
     queryStr += ` WHERE ${condition}`;
-
-    console.log(queryStr);
 
     connection.query(queryStr, (err, res) => {
       if (err) throw err;
@@ -82,4 +73,5 @@ const orm = {
   }
 };
 
+// Export
 module.exports = orm;

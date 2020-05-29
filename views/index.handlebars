@@ -31,7 +31,7 @@
                 </tr>
             </thead>
             <tbody>
-
+                {{!-- Loops through burgers data --}}
                 {{#each burgers}}
                 {{#unless isDevoured}}
                 {{> burgers/burger-block isDevoured=false}}
@@ -55,6 +55,7 @@
             </thead>
             <tbody>
 
+                {{!-- Loops through burgers data --}}
                 {{#each burgers}}
                 {{#if isDevoured}}
                 {{> burgers/burger-block isDevoured=true}}

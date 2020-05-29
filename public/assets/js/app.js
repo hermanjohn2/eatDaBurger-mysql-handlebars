@@ -1,12 +1,8 @@
-// Using ES5 syntax because ES6 arrow functions will not work to use .data()
 $(document).ready(function () {
+  // When the "Devour"/"Eat Again" btn is clicked...
   $('.burger-handler').on('click', function (event) {
-    // console.log('click');
-
     var id = $(this).data('id');
     var devouredState = $(this).data('devoured');
-
-    // console.log(`id: ${id}`, `isDevoured: ${devouredState}`);
 
     // Checking if devouredState is true or false -- changing value based on state
     if (devouredState) devouredState = false;
@@ -16,16 +12,23 @@ $(document).ready(function () {
       isDevoured: devouredState
     };
 
+    // PUT request
     $.ajax(`/api/burgers/${id}`, {
       type: 'PUT',
       data: newDevouredState
-    }).then(function () {
-      console.log(`Changed Devoured State to: ${devouredState}`);
+    })
+      .then(function () {
+        console.log(`Changed Devoured State to: ${devouredState}`);
 
-      location.reload();
-    });
+        // Reloading the page
+        location.reload();
+      })
+      .catch(function (err) {
+        if (err) throw err;
+      });
   });
 
+  // When the create new burger btn is clicked...
   $('.create-form').on('submit', function (event) {
     event.preventDefault();
 
@@ -33,13 +36,17 @@ $(document).ready(function () {
       name: $('#burger').val().trim()
     };
 
+    // POST request
     $.ajax('/api/burgers', {
       type: 'POST',
       data: newBurger
-    }).then(function () {
-      console.log('success');
-
-      location.reload();
-    });
+    })
+      .then(function () {
+        // Reloading the page
+        location.reload();
+      })
+      .catch(function (err) {
+        if (err) throw err;
+      });
   });
 });
