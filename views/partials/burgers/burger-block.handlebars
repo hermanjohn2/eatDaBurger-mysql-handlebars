@@ -1,7 +1,13 @@
-<li>
-    {{name}}
+<tr class="table-row">
+    <td>
 
-    <button type="button" class="burger-handler" data-id="{{id}}" data-devoured="{{isDevoured}}">
-        {{#if isDevoured}}Make Burger Again{{else}}Devour Burger{{/if}}
-    </button>
-</li>
+        {{name}}
+
+        <button type="button" class="burger-handler button primary float-right align-middle" data-id="{{id}}"
+            data-devoured="{{isDevoured}}">
+
+            {{#if isDevoured}}Eat Again{{else}}Devour{{/if}}
+
+        </button>
+    </td>
+</tr>

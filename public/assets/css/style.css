@@ -1,0 +1,45 @@
+body {
+  background-color: #30fcc6;
+}
+
+h1 {
+  font-size: 8vw;
+  font-family: 'Bangers', sans-serif;
+}
+
+p {
+  font-family: 'Asap', sans-serif;
+  font-size: 20px;
+}
+
+table {
+  box-shadow: 1px 1px #888, 2px 2px #888, 3px 3px #888, 4px 4px #888,
+    5px 5px #888, 6px 6px #888, 7px 7px #888, 8px 8px #888;
+}
+
+thead,
+td {
+  background-color: #1c8065;
+  color: #fff;
+  font-family: 'Asap', sans-serif;
+}
+
+thead {
+  font-size: 3vw;
+  font-style: italic;
+}
+
+td {
+  font-size: 20px;
+}
+
+/* Rounded Search Bar */
+.input-group-rounded .input-group-field {
+  border-radius: 5000px 0 0 5000px;
+  padding-left: 1rem;
+}
+
+.input-group-rounded .input-group-button .button {
+  border-radius: 0 5000px 5000px 0;
+  font-size: 0.8rem;
+}
