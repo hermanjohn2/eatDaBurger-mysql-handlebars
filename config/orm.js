@@ -46,14 +46,8 @@ const orm = {
     });
   },
   create: (table, cols, vals, cb) => {
-    let queryStr = `INSERT INTO ${table} `;
-
-    queryStr += `(`;
-    queryStr += cols.toString();
-    queryStr += `) `;
-    queryStr += `VALUES (`;
-    queryStr += printQuestionMarks(vals.length);
-    queryStr += `) `;
+    let queryStr = `INSERT INTO ${table} (${cols.toString()}) `;
+    queryStr += `VALUES (${printQuestionMarks(vals.length)})`;
 
     console.log(queryStr);
 
@@ -65,10 +59,8 @@ const orm = {
   },
   update: (table, objColsVals, condition, cb) => {
     let queryStr = `UPDATE ${table}`;
-    queryStr += ` SET `;
-    queryStr += objToSql(objColsVals);
-    queryStr += ` WHERE `;
-    queryStr += condition;
+    queryStr += ` SET ${objToSql(objColsVals)}`;
+    queryStr += ` WHERE ${condition}`;
 
     console.log(queryStr);
 
@@ -79,9 +71,8 @@ const orm = {
     });
   },
   delete: (table, condition, cb) => {
-    let queryStr = `DELETE FROM ${table}`;
-    queryStr += ` WHERE `;
-    queryStr += condition;
+    let queryStr = `DELETE FROM ${table} `;
+    queryStr += `WHERE ${condition}`;
 
     connection.query(queryStr, (err, res) => {
       if (err) throw err;
