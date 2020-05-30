@@ -60,16 +60,6 @@ const orm = {
 
       cb(res);
     });
-  },
-  delete: (table, condition, cb) => {
-    let queryStr = `DELETE FROM ${table} `;
-    queryStr += `WHERE ${condition}`;
-
-    connection.query(queryStr, (err, res) => {
-      if (err) throw err;
-
-      cb(res);
-    });
   }
 };
 
